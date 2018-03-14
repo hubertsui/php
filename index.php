@@ -8,7 +8,7 @@ $myfile = fopen("D:\home\data\mysql\MYSQLCONNSTR_localdb.ini", "r") or die("Unab
 $password = substr(fread($myfile,filesize("D:\home\data\mysql\MYSQLCONNSTR_localdb.ini")),62);
 fclose($myfile);
 echo $password;
-$pdo = new PDO("mysql:dbname=localdb;host=127.0.0.1","azure",$password);
+$pdo = new PDO("mysql:dbname=localdb;host=localhost","azure",$password);
 $pdo->query("CREATE TABLE hello (what VARCHAR(50) NOT NULL)");
 $hw=new HelloWorld($pdo);
 $content=$hw->hello();
