@@ -7,10 +7,8 @@ php:
 
   # aliased to 5.2.17
   - 5.2
-    dist: precise
   # aliased to 5.3.29
   - 5.3
-    dist: precise
   # aliased to a recent 5.4.x version
   - 5.4
   # aliased to a recent 5.5.x version
@@ -29,6 +27,11 @@ env:
 
 # optionally set up exclutions and allowed failures in the matrix
 matrix:
+  include:
+    - php: 5.2
+      dist: precise
+    - php: 5.3
+      dist: precise
   exclude:
     - php: hhvm
       env: DB=pgsql  # PDO driver for pgsql is unsupported by HHVM (3rd party install for support)
