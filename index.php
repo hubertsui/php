@@ -5,10 +5,10 @@ error_reporting(-1);
 
 require_once 'HelloWorld.php';
 $myfile = fopen("D:\home\data\mysql\MYSQLCONNSTR_localdb.ini", "r") or die("Unable to open file!");
-$password = substr(fread($myfile,filesize("D:\home\data\mysql\MYSQLCONNSTR_localdb.ini")),62);
+$conns = strtok(fread($myfile,filesize("D:\home\data\mysql\MYSQLCONNSTR_localdb.ini")),"=;");
 fclose($myfile);
-echo $password;
-$pdo = new PDO("mysql:dbname=localdb;host=localhost","azure",$password);
+echo $conns;
+$pdo = new PDO("mysql:dbname=" . conns[1] . ";host=" . $conns[3], $conn[5], $conn[7]);
 $pdo->query("CREATE TABLE hello (what VARCHAR(50) NOT NULL)");
 $hw=new HelloWorld($pdo);
 $content=$hw->hello();
