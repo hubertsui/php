@@ -5,5 +5,6 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B97
 sudo apt-get install apt-transport-https
 sudo apt-get update && sudo apt-get install azure-cli
 az login --service-principal --allow-no-subscriptions -u $AZURE_USERNAME -p $AZURE_PASSWORD --tenant $AZURE_TENANT_ID
+az account list
 az account set --subscription $AZURE_SUBSCRIPTION
 az container create --resource-group MSAzure-ACIAKS-CICD-Demo --name cicd-demo --image microsoft/aci-helloworld --ip-address Public --dns-name-label cicd-demo-xq4sfx
